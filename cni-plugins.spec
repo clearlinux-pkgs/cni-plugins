@@ -1,6 +1,6 @@
 Name     : cni-plugins
 Version  : 0.6.0
-Release  : 1
+Release  : 2
 URL      : https://github.com/containernetworking/plugins/
 Source0  : https://github.com/containernetworking/plugins/archive/v0.6.0.tar.gz
 Summary  : Container Network Interface
