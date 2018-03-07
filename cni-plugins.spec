@@ -1,8 +1,8 @@
 Name     : cni-plugins
-Version  : 0.6.0
-Release  : 2
+Version  : 0.7.0
+Release  : 3
 URL      : https://github.com/containernetworking/plugins/
-Source0  : https://github.com/containernetworking/plugins/archive/v0.6.0.tar.gz
+Source0  : https://github.com/containernetworking/plugins/archive/v0.7.0.tar.gz
 Summary  : Container Network Interface
 Group    : Development/Tools
 License  : Apache-2.0 BSD-3-Clause MIT MPL-2.0-no-copyleft-exception
@@ -22,7 +22,7 @@ network interfaces in Linux containers, along with a number
 of supported plugins.
 
 %prep
-%setup -q -n plugins-0.6.0
+%setup -q -n plugins-0.7.0
 
 
 %build
@@ -42,6 +42,7 @@ done
 /usr/libexec/cni/bridge
 /usr/libexec/cni/dhcp
 /usr/libexec/cni/flannel
+/usr/libexec/cni/host-device
 /usr/libexec/cni/host-local
 /usr/libexec/cni/ipvlan
 /usr/libexec/cni/loopback
