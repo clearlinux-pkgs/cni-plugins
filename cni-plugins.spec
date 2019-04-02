@@ -1,6 +1,6 @@
 Name     : cni-plugins
 Version  : 0.7.0
-Release  : 5
+Release  : 6
 URL      : https://github.com/containernetworking/plugins/
 Source0  : https://github.com/containernetworking/plugins/archive/v0.7.0.tar.gz
 Summary  : Container Network Interface
@@ -14,6 +14,7 @@ BuildRequires : go
 %define debug_package %{nil}
 %define __strip /bin/true
 
+Patch0001: CVE-2019-9946.patch
 
 %description
 The CNI (Container Network Interface) project consists of
@@ -24,6 +25,7 @@ of supported plugins.
 %prep
 %setup -q -n plugins-0.7.0
 
+%patch0001 -p1
 
 %build
 ./build.sh
