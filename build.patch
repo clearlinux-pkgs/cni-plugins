@@ -1,0 +1,25 @@
+From 271c407c3bb11ef33a321eeb51d4a01c1e7129d1 Mon Sep 17 00:00:00 2001
+From: William Douglas <william.douglas@intel.com>
+Date: Tue, 7 Apr 2020 14:46:10 -0700
+Subject: [PATCH] Add simple build system
+
+---
+ Makefile | 6 ++++++
+ 1 file changed, 6 insertions(+)
+ create mode 100644 Makefile
+
+diff --git a/Makefile b/Makefile
+new file mode 100644
+index 0000000..f7b1e3c
+--- /dev/null
++++ b/Makefile
+@@ -0,0 +1,6 @@
++all:
++	@./build_linux.sh
++
++install:
++	@install -m 0755 -d $(DESTDIR)/usr/libexec/cni
++	@for f in $(shell ls ./bin); do install -m 0755 ./bin/$${f} $(DESTDIR)/usr/libexec/cni/$${f}; done
+-- 
+2.26.0
+
