@@ -4,12 +4,14 @@
 #
 Name     : cni-plugins
 Version  : 0.8.5
-Release  : 9
+Release  : 10
 URL      : https://github.com/containernetworking/plugins/archive/v0.8.5.tar.gz
 Source0  : https://github.com/containernetworking/plugins/archive/v0.8.5.tar.gz
+Source1  : 60-ip4-lxc-filter.conf
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : Apache-2.0 BSD-2-Clause BSD-3-Clause LGPL-3.0 MIT MPL-2.0
+Requires: cni-plugins-config = %{version}-%{release}
 Requires: cni-plugins-libexec = %{version}-%{release}
 Requires: cni-plugins-license = %{version}-%{release}
 BuildRequires : buildreq-golang
@@ -18,9 +20,18 @@ Patch1: build.patch
 %description
 [![Build Status](https://travis-ci.org/containernetworking/plugins.svg?branch=master)](https://travis-ci.org/containernetworking/plugins)
 
+%package config
+Summary: config components for the cni-plugins package.
+Group: Default
+
+%description config
+config components for the cni-plugins package.
+
+
 %package libexec
 Summary: libexec components for the cni-plugins package.
 Group: Default
+Requires: cni-plugins-config = %{version}-%{release}
 Requires: cni-plugins-license = %{version}-%{release}
 
 %description libexec
@@ -45,7 +56,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1586296343
+export SOURCE_DATE_EPOCH=1588096719
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -58,7 +69,7 @@ make  %{?_smp_mflags}
 
 
 %install
-export SOURCE_DATE_EPOCH=1586296343
+export SOURCE_DATE_EPOCH=1588096719
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/cni-plugins
 cp %{_builddir}/plugins-0.8.5/LICENSE %{buildroot}/usr/share/package-licenses/cni-plugins/92170cdc034b2ff819323ff670d3b7266c8bffcd
@@ -86,9 +97,15 @@ cp %{_builddir}/plugins-0.8.5/vendor/golang.org/x/crypto/LICENSE %{buildroot}/us
 cp %{_builddir}/plugins-0.8.5/vendor/golang.org/x/net/LICENSE %{buildroot}/usr/share/package-licenses/cni-plugins/d6a5f1ecaedd723c325a2063375b3517e808a2b5
 cp %{_builddir}/plugins-0.8.5/vendor/golang.org/x/sys/LICENSE %{buildroot}/usr/share/package-licenses/cni-plugins/d6a5f1ecaedd723c325a2063375b3517e808a2b5
 %make_install
+mkdir -p %{buildroot}/usr/lib/sysctl.d
+install  %{_sourcedir}/60-ip4-lxc-filter.conf %{buildroot}/usr/lib/sysctl.d/60-ip4-lxc-filter.conf
 
 %files
 %defattr(-,root,root,-)
+
+%files config
+%defattr(-,root,root,-)
+/usr/lib/sysctl.d/60-ip4-lxc-filter.conf
 
 %files libexec
 %defattr(-,root,root,-)
