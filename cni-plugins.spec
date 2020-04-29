@@ -4,7 +4,7 @@
 #
 Name     : cni-plugins
 Version  : 0.8.5
-Release  : 10
+Release  : 11
 URL      : https://github.com/containernetworking/plugins/archive/v0.8.5.tar.gz
 Source0  : https://github.com/containernetworking/plugins/archive/v0.8.5.tar.gz
 Source1  : 60-ip4-lxc-filter.conf
@@ -56,7 +56,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1588096719
+export SOURCE_DATE_EPOCH=1588120152
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -69,7 +69,7 @@ make  %{?_smp_mflags}
 
 
 %install
-export SOURCE_DATE_EPOCH=1588096719
+export SOURCE_DATE_EPOCH=1588120152
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/cni-plugins
 cp %{_builddir}/plugins-0.8.5/LICENSE %{buildroot}/usr/share/package-licenses/cni-plugins/92170cdc034b2ff819323ff670d3b7266c8bffcd
