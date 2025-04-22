@@ -7,7 +7,7 @@
 #
 Name     : cni-plugins
 Version  : 1.5.1
-Release  : 58
+Release  : 59
 URL      : https://github.com/containernetworking/plugins/archive/v1.5.1/plugins-1.5.1.tar.gz
 Source0  : https://github.com/containernetworking/plugins/archive/v1.5.1/plugins-1.5.1.tar.gz
 Source1  : 60-ip4-lxc-filter.conf
